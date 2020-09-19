@@ -6,6 +6,7 @@ public class PlayerBehaviour : MonoBehaviour
 {
     public float maxSpeed, speed;
     public bool isGround = false;
+    private bool isPrayng = false;
     public Animator PlayerAnimator;
     
     void Update()
@@ -13,9 +14,11 @@ public class PlayerBehaviour : MonoBehaviour
 
         if (Input.GetKey("right") && isGround) {
             speed += 0.006f;
+            if (speed > maxSpeed) { speed = maxSpeed; }
         }else if (Input.GetKey("left") && isGround)
         {
             speed -= 0.006f;
+            if (speed < -maxSpeed) { speed = -maxSpeed; }
         }
         else
         {
@@ -25,7 +28,7 @@ public class PlayerBehaviour : MonoBehaviour
             }
             else
             {
-                speed *= 0.925f;
+                speed *= 0.9f;
             }
 
             if (Mathf.Abs(speed) <= 0.02f)
@@ -43,14 +46,16 @@ public class PlayerBehaviour : MonoBehaviour
         if(Input.GetKey(KeyCode.Z))
         {
             PlayerAnimator.SetBool("isPraying", true);
-            speed = 0;
+            isPrayng = true;
         }
         else
         {
             PlayerAnimator.SetBool("isPraying", false);
         }
 
+        if (isPrayng) { speed = 0; }
         this.transform.position += new Vector3(speed, 0, 0);
+
         if(speed < 0)
         {
             this.gameObject.transform.localScale = new Vector3(-2.25f, 2.25f, 2.25f);
@@ -70,5 +75,10 @@ public class PlayerBehaviour : MonoBehaviour
         {
             isGround = true;
         }
+    }
+
+    public void prayEnd()
+    {
+        isPrayng = false;
     }
 }
