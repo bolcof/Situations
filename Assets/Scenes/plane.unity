@@ -656,6 +656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 0.21
+  addSpeed: 0.005
   speed: 0
   isGround: 0
   PlayerAnimator: {fileID: 899082725}

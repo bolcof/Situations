@@ -4,20 +4,26 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
-    public float maxSpeed, speed;
+    public float maxSpeed, addSpeed, speed;
+    private Vector3 defaultScale;
     public bool isGround = false;
     private bool isPrayng = false;
     public Animator PlayerAnimator;
-    
+
+    private void Start()
+    {
+        defaultScale = this.gameObject.transform.localScale;
+    }
+
     void Update()
     {
 
         if (Input.GetKey("right") && isGround) {
-            speed += 0.006f;
+            speed += addSpeed;
             if (speed > maxSpeed) { speed = maxSpeed; }
         }else if (Input.GetKey("left") && isGround)
         {
-            speed -= 0.006f;
+            speed -= addSpeed;
             if (speed < -maxSpeed) { speed = -maxSpeed; }
         }
         else
@@ -58,11 +64,11 @@ public class PlayerBehaviour : MonoBehaviour
 
         if(speed < 0)
         {
-            this.gameObject.transform.localScale = new Vector3(-2.25f, 2.25f, 2.25f);
+            this.gameObject.transform.localScale = new Vector3(-defaultScale.x, defaultScale.y, defaultScale.z);
         }
         else if(speed > 0)
         {
-            this.gameObject.transform.localScale = new Vector3(2.25f, 2.25f, 2.25f);
+            this.gameObject.transform.localScale = defaultScale;
         }
 
         PlayerAnimator.SetFloat("speed", Mathf.Abs(speed));
