@@ -50,7 +50,7 @@ public class PlayerBehaviour : MonoBehaviour
             isGround = false;
         }
 
-        if(Input.GetKey(KeyCode.Z))
+        if(Input.GetKey(KeyCode.Z) && isGround)
         {
             PlayerAnimator.SetBool("isPraying", true);
             isPrayng = true;
