@@ -8,6 +8,7 @@ public class PlayerBehaviour : MonoBehaviour
     private Vector3 defaultScale;
     public bool isGround = false;
     private bool isPrayng = false;
+    private bool isHitRightWall = false, isHitLeftWall = false;
     public Animator PlayerAnimator;
 
     private void Start()
@@ -18,10 +19,10 @@ public class PlayerBehaviour : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKey("right") && isGround) {
+        if (Input.GetKey("right") && isGround && !isHitRightWall) {
             speed += addSpeed;
             if (speed > maxSpeed) { speed = maxSpeed; }
-        }else if (Input.GetKey("left") && isGround)
+        }else if (Input.GetKey("left") && isGround && !isHitLeftWall)
         {
             speed -= addSpeed;
             if (speed < -maxSpeed) { speed = -maxSpeed; }
@@ -80,6 +81,29 @@ public class PlayerBehaviour : MonoBehaviour
         if (collision.gameObject.CompareTag("ground"))
         {
             isGround = true;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == ("rightWall"))
+        {
+            isHitRightWall = true;
+        }else if (collision.gameObject.name == ("leftWall"))
+        {
+            isHitLeftWall = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == ("rightWall"))
+        {
+            isHitRightWall = false;
+        }
+        else if (collision.gameObject.name == ("leftWall"))
+        {
+            isHitLeftWall = false;
         }
     }
 
