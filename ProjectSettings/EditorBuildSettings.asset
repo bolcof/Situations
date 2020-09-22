@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/top.unity
     guid: d5f1f71c2dc9f4147b5ca5731561aeaf
+  - enabled: 1
+    path: Assets/Scenes/fire.unity
+    guid: f19785dc3988b4f32a04c1c4796743dd
   m_configObjects: {}
