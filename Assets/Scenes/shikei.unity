@@ -820,7 +820,7 @@ MonoBehaviour:
   switchOnImg:
   - {fileID: 6707557550267799693, guid: 15eaf7bdf1b2b4097b13dda1520462c0, type: 3}
   - {fileID: 21300000, guid: 0de7cec8f05524bb69f3b02e138cf266, type: 3}
-  - {fileID: -180654911780098620, guid: 15eaf7bdf1b2b4097b13dda1520462c0, type: 3}
+  - {fileID: 2605109193931170650, guid: aab95f4b1a411415bbd3aa663e443f19, type: 3}
 --- !u!1 &1828586984
 GameObject:
   m_ObjectHideFlags: 0
