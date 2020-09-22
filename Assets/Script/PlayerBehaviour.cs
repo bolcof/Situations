@@ -44,7 +44,7 @@ public class PlayerBehaviour : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown("up") && isGround)
+        if (Input.GetKeyDown("up") && isGround && !isPrayng)
         {
             this.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0.0f, 13.5f), ForceMode2D.Impulse);
             isGround = false;
