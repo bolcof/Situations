@@ -14,7 +14,9 @@ public class TopView : MonoBehaviour
 
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Q) && topViewAnimator.GetBool("up")) {
+            pushTitleGo();
+        }
     }
 
     public void pushTitleGo()

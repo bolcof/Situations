@@ -9,7 +9,7 @@ public class BlackFade : MonoBehaviour
     public float fadeTime;
     public string nextScene;
     private float time;
-    private bool isFadingOn, isFadingOff;
+    public bool isFadingOn, isFadingOff;
 
     private void Start() {
         time = 0.0f;
@@ -24,6 +24,11 @@ public class BlackFade : MonoBehaviour
             time += Time.deltaTime;
             float alpha = time / fadeTime;
             this.gameObject.GetComponent<Image>().color = new Color(0.0f, 0.0f, 0.0f, 1.0f - alpha);
+            if (time >= fadeTime)
+            {
+                time = 0.0f;
+                isFadingOff = false;
+            }
         }
         else if (isFadingOn)
         {
@@ -32,7 +37,9 @@ public class BlackFade : MonoBehaviour
             this.gameObject.GetComponent<Image>().color = new Color(0.0f, 0.0f, 0.0f, alpha);
             if (time >= fadeTime)
             {
-                //SceneManager.LoadScene(nextScene);
+                time = 0.0f;
+                isFadingOn = false;
+                SceneManager.LoadScene(nextScene);
             }
         }
     }
