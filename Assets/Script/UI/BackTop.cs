@@ -7,6 +7,7 @@ public class BackTop : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q)) {
+            GameObject.Find("BlackFade").GetComponent<BlackFade>().nextScene = "top";
             GameObject.Find("BlackFade").GetComponent<BlackFade>().isFadingOn = true;
         }
     }
