@@ -958,7 +958,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeTime: 2
-  nextScene: 
+  nextScene: plane
   isFadingOn: 0
   isFadingOff: 0
 --- !u!114 &1353251208
@@ -1155,6 +1155,8 @@ MonoBehaviour:
   speed: 0
   isGround: 0
   PlayerAnimator: {fileID: 1489456202}
+  firstLockTime: 0
+  isEnabled: 0
 --- !u!61 &1489456205
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -1729,7 +1729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeTime: 2
-  nextScene: top
+  nextScene: fire
   isFadingOn: 0
   isFadingOff: 0
 --- !u!1 &1851705875

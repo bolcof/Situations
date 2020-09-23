@@ -872,7 +872,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeTime: 3
-  nextScene: top
+  nextScene: plane
   isFadingOn: 0
   isFadingOff: 0
 --- !u!114 &1828586987

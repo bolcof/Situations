@@ -21,6 +21,8 @@ public class TopView : MonoBehaviour
 
     public void pushTitleGo()
     {
-        topViewAnimator.SetBool("up", !topViewAnimator.GetBool("up"));
+        //topViewAnimator.SetBool("up", !topViewAnimator.GetBool("up"));
+
+        GameObject.Find("BlackFade").GetComponent<BlackFade>().isFadingOn = true;
     }
 }
