@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class Death : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class Death : MonoBehaviour
     private string nextScene;
 
     private float time;
+    public VideoPlayer backVideo;
 
     void Start()
     {
@@ -21,11 +23,11 @@ public class Death : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        if(time > DeadLine + toNextScene)
+        if(backVideo.time > DeadLine + toNextScene)
         {
             SceneManager.LoadScene(nextScene);
         }
-        else if(time > DeadLine)
+        else if(backVideo.time > DeadLine)
         {
             this.gameObject.GetComponent<Image>().enabled = true;
         }

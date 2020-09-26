@@ -16,6 +16,9 @@ public class ShikeiButtons : MonoBehaviour
     public SpriteRenderer[] switchObj = new SpriteRenderer[3];
     public Sprite[] switchOnImg = new Sprite[3];
 
+    [SerializeField]
+    private AudioSource deathSwitch, door;
+
     void Start() {
         Vloader = this.gameObject.GetComponent<VideoLoader>();
         Vplayer = this.gameObject.GetComponent<VideoPlayer>();
@@ -30,17 +33,19 @@ public class ShikeiButtons : MonoBehaviour
     }
 
     void Update() {
-        Debug.Log(Vplayer.time);
-        if(Vplayer.time >= leftTime)
+        if(Vplayer.time >= leftTime && !switched[0])
         {
             switched[0] = true;
             switchObj[0].sprite = switchOnImg[0];
-
+            deathSwitch.time = 0.0f;
+            deathSwitch.Play();
         }
-        if(Vplayer.time >= rightTime)
+        if(Vplayer.time >= rightTime && !switched[2])
         {
             switched[2] = true;
             switchObj[2].sprite = switchOnImg[2];
+            deathSwitch.time = 0.0f;
+            deathSwitch.Play();
         }
 
         if (switched[0] && switched[1] && switched[2] && !isHunged) {
@@ -59,6 +64,9 @@ public class ShikeiButtons : MonoBehaviour
     public void pushMiddle() {
         switched[1] = true;
         switchObj[1].sprite = switchOnImg[1];
+        deathSwitch.time = 0.0f;
+        deathSwitch.Play();
+
     }
 
     void pushAllButton() {
@@ -66,5 +74,6 @@ public class ShikeiButtons : MonoBehaviour
         afterButtonVideo.GetComponent<VideoPlayer>().Play();
         afterButtonVideo.GetComponent<VideoPlayer>().isLooping = false;
         isHunged = true;
+        door.PlayDelayed(0.72f);
     }
 }
