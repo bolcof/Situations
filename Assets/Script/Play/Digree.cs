@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class Digree : MonoBehaviour
 {
@@ -10,24 +11,25 @@ public class Digree : MonoBehaviour
     [SerializeField]
     private float digX, digY;
 
-    private float time = 0.0f;
     private bool isDigreeing = false;
+    private bool digStarted = false;
 
     public float digTime;
     private float digCount = 0.0f;
 
+    public VideoPlayer backVideo;
+
     void Update()
     {
-        time += Time.deltaTime;
-        if(time > start+ duration)
+        if(backVideo.time > start + duration && isDigreeing)
         {
             isDigreeing = false;
             this.gameObject.transform.position = new Vector3(0.0f, 0.0f, -10.0f);
-            time = -100000.0f;
         }
-        else if(time > start)
+        else if(backVideo.time > start && !digStarted)
         {
             isDigreeing = true;
+            digStarted = true;
         }
 
         if (isDigreeing)

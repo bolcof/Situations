@@ -9,7 +9,7 @@ public class ShikeiButtons : MonoBehaviour
     private VideoPlayer Vplayer;
     private GameObject afterButtonVideo;
 
-    private float time, leftTime, rightTime, afterButtonTime;
+    private float leftTime, rightTime, afterButtonTime;
     public bool[] switched = new bool[3];
     public bool isHunged;
 
@@ -21,7 +21,7 @@ public class ShikeiButtons : MonoBehaviour
         Vplayer = this.gameObject.GetComponent<VideoPlayer>();
         afterButtonVideo = GameObject.Find("afterButtonVideo");
 
-        time = afterButtonTime = 0.0f;
+        Vplayer.time = afterButtonTime = 0.0f;
         leftTime = Random.Range(12.5f, 19.0f);
         rightTime = Random.Range(12.5f, 19.0f);
 
@@ -30,14 +30,14 @@ public class ShikeiButtons : MonoBehaviour
     }
 
     void Update() {
-        time += Time.deltaTime;
-        if(time >= leftTime)
+        Debug.Log(Vplayer.time);
+        if(Vplayer.time >= leftTime)
         {
             switched[0] = true;
             switchObj[0].sprite = switchOnImg[0];
 
         }
-        if(time >= rightTime)
+        if(Vplayer.time >= rightTime)
         {
             switched[2] = true;
             switchObj[2].sprite = switchOnImg[2];

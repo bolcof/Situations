@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class FireWall : MonoBehaviour
 {
@@ -17,28 +18,25 @@ public class FireWall : MonoBehaviour
     [SerializeField]
     private float[] rightWallPos = new float[4];
 
-    void Start()
-    {
-        
-    }
+    public VideoPlayer backVideo;
 
     void Update()
     {
         time += Time.deltaTime;
-        if (time > 40.0f)
+        if (backVideo.time > 40.0f)
         {
             stage = 3;
             Left.transform.position = new Vector3(leftWallPos[stage], 0.0f, 0.0f);
             Right.transform.position = new Vector3(rightWallPos[stage], 0.0f, 0.0f);
 
         }
-        else if (time > 25.0f)
+        else if (backVideo.time > 25.0f)
         {
             stage = 2;
             Left.transform.position = new Vector3(leftWallPos[stage], 0.0f, 0.0f);
             Right.transform.position = new Vector3(rightWallPos[stage], 0.0f, 0.0f);
         }
-        else if (time > 10.0f)
+        else if (backVideo.time > 10.0f)
         {
             stage = 1;
             Left.transform.position = new Vector3(leftWallPos[stage], 0.0f, 0.0f);
